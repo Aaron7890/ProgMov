@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+model Usuario{
+    usuarioId String @id @default(uuid())
+    rol String
+    nombre String
+    contrasena String
+    correo String
+    ruta ruta[]
+    historial historial?
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+    deleted_at DateTime @default(now())
+}
+model ruta{
+    rutaId String @id @default(uuid())
+    nombre String
+    imagen String
+    idUsuario String
+    usuario Usuario @relation(fields: [idUsuario], references: [usuarioId])
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+    deleted_at DateTime @default(now())
+}
+model historial{
+    historialId String @id @default(uuid())
+    rutaHistorial String
+    idUsuario String @unique
+    usuario Usuario @relation(fields: [idUsuario], references: [usuarioId])
+}
+
