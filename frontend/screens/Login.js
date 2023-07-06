@@ -7,7 +7,7 @@ function Login({navigation}) {
       <Text style={styles.subtitulo}>Iniciar Sesion</Text>
       <TextInput placeholder="Correo Electronico" style={styles.TextInput}
       />
-      <TextInput placeholder="Contraseña" style={styles.TextInput}
+      <TextInput secureTextEntry placeholder="Contraseña" style={styles.TextInput}
       />
       <Button title="Iniciar sesión" style={styles.boton} onPress={()=>navigation.navigate('Api')} />
       <Button title="¿No tienes cuenta?" style={styles.boton} onPress={()=>navigation.navigate('Registro')} />
